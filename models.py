@@ -7,7 +7,7 @@ class Fish(db.Model);
     name = db.Column(String(80), nullable=False)
     feed_id = db.Column(Integer, ForeignKey=(Feed.id))
 
-    def __init__(self):
+    def __init__(self,name):
         self.name = name
 
 
@@ -21,7 +21,7 @@ class Feed(db.Model);
     fish = relationship("Fish",order_by="Fish.id", cascade="all, delete-orphan")
     supplier= relationship("Supplier",order_by="Supplier.id", cascade="all, delete-orphan")
 
-    def __init__(self):
+    def __init__(self, name):
         self.name = name
 
 
@@ -35,5 +35,5 @@ def Supplier(db.Model):
     price = db.Column(Integer, nullable=False)
     feed_id = db.Column(Integer, ForeignKey=(Feed.id))
 
-    def __init__(self):
+    def __init__(self, name):
         self.name = name

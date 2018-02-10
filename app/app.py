@@ -24,7 +24,7 @@ class Feeds(Fish):
             suppliers = get_suupliers.feed_suppliers
             Fishes = Fish.Fish_list
 
-    def get_suppliers(feed_id):
+def get_suppliers(feed_id):
         feed_suppliers = []
         suppliers = # supplier with feed ID query from the database
         if suppliers:
@@ -32,6 +32,23 @@ class Feeds(Fish):
                 feed_suppliers.append(supplier)
         else:
             print("no suppliers for that at the moment!")
+
+
+@app.route('/')
+def hello():
+    return "Hello World!"
+
+
+@app.route('/<name>')
+def hello_name(name):
+    return "Hello {}!".format(name)
+
+if __name__ == '__main__':
+    app.run()
+
+
+
+
                 
 
 
