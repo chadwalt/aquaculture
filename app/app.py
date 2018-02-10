@@ -17,7 +17,7 @@ class Fish(Resource):
 
 class Feeds(Fish):
     def get_feed(feed_name):
-        feed_name = BucketList.query.filter_by(id=ID).first()
+        feed_name = Feed.query.filter_by(name=feed_name).first()
         if feed_name:
             impact = BucketListItem.query.filter_by(bucket_list_it_belongs_to=bucketlist.name).all()
             feed_id = BucketListItem.query.filter_by(bucket_list_it_belongs_to=bucketlist.name).all()
