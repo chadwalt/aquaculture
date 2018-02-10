@@ -5,7 +5,7 @@ class Fish(db.Model):
 
     id = db.Column(Integer, primary_key=True)
     name = db.Column(String(80), nullable=False)
-    feed_id = db.Column(Integer, ForeignKey=(Feed.id))
+    feed_name = db.Column(Integer, ForeignKey=(Feed.name))
 
     def __init__(self,name):
         self.name = name
@@ -32,7 +32,7 @@ class Supplier(db.Model):
     id = db.Column(Integer, primary_key=True)
     name = db.Column(String(80), nullable=False)
     telephone = db.Column(String(80), nullable=False)
-    price = db.Column(Integer, nullable=False)
+    price = db.Column(Integer, nullable=False) # bug
     feed_id = db.Column(Integer, ForeignKey=(Feed.id))
 
     def __init__(self, name):
