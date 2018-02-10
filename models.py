@@ -25,7 +25,7 @@ class Feed(db.Model):
         self.name = name
 
 
-def Supplier(db.Model):
+class Supplier(db.Model):
     
     __tablename__ = supplier
 
