@@ -1,4 +1,5 @@
 import os
+from decouple import config
 
 class Config(object):
     DEBUG = False
@@ -6,14 +7,14 @@ class Config(object):
     SECRET = os.getenv('SECRET')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SECRET = "very sensitive text"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/aquaculture'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/aqua'
 
 class DevelopmentConfig(Config):
     FLASK_APP = "run.py"
     Development = True
     SECRET = "very sensitive text"
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/aquaculture'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/aqua'
 
 class TestingConfig(Config):
     Testing = True

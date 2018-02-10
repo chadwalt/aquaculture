@@ -1,28 +1,31 @@
 from flask import Flask, jsonify
-from .models.py import Fish, Feed, Supplier
+from models.py import Fish, Feed, Supplier
+from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
+from instance.config import app_config
+import os
 
 
-app = Flask(__name__)
 
 class Fish(Resource):
-    
     def get_fish(feed_name):
         fish_list = []
         fish_that_eat_feed = Fish.query.filter_by(feed_name=feed_name).all()
         if fish_that_eat_feed:
-           for fish in fish_that_eat_feed:
-               fish_details = {
-                   'id': fish.id,
-                   'name': fish.name
-                   }
-                   fish_list.append(fish_details)
-
+            for fish in fish_that_eat_feed:
+                fish_details = {
+                    'name': fish.name,
+                    'id' : fish.id
+                    }
+                fish_list.append(fish_details)
             return jsonify({'fish that eat feed are': fish_list}, 200)
         else:
             return("no fish that eat that feed at the moment!")
 
 
 class Feeds(Fish):
+    
+    @app.route('/<feed_name>')
     def get_feed(feed_name):
         feed_name = Feed.query.filter_by(name=feed_name).first()
         if feed_name:
@@ -40,10 +43,10 @@ class Feeds(Fish):
             for supplier in suppliers:
                 supplier_details = {
                     'id': supplier.id,
-                    'name': supplier.name
-                    'telephone' = supplier.telephone,
-                    'price' = supplier.price # bug from database models
-                    'feed_id' = supplier.feed_id
+                    'name': supplier.name,
+                    'telephone': supplier.telephone,
+                    'price': supplier.price, # bug from database models
+                    'feed_id': supplier.feed_id
                 }
                 feed_suppliers.append(supplier_details)
 
@@ -52,24 +55,7 @@ class Feeds(Fish):
             return("no suppliers for that at the moment!")
 
 
-@app.route('/')
-def hello():
-    return "Hello World!"
-
-
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
-
-if __name__ == '__main__':
-    app.run()
 
 
 
 
-                
-
-
-
-
-            

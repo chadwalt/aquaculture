@@ -2,9 +2,8 @@
 """
 Main Application File
 """
-from app import create_app
-
-app = create_app("development")
+import os
 
 if __name__ == '__main__':
     app.run()
+
