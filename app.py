@@ -1,14 +1,14 @@
 from flask import Flask, jsonify
 from models.py import Fish, Feed, Supplier
-from flask_restful import Api
+from flask_restful import Resource
 from flask_sqlalchemy import SQLAlchemy
 from instance.config import app_config
 import os
-
+from __init__ import app
 
 
 class Fish(Resource):
-    def get_fish(feed_name):
+    def get_fish(self, feed_name):
         fish_list = []
         fish_that_eat_feed = Fish.query.filter_by(feed_name=feed_name).all()
         if fish_that_eat_feed:
@@ -26,7 +26,7 @@ class Fish(Resource):
 class Feeds(Fish):
     
     @app.route('/<feed_name>')
-    def get_feed(feed_name):
+    def get_feed(self, feed_name):
         feed_name = Feed.query.filter_by(name=feed_name).first()
         if feed_name:
             impact = Feed.query.filter_by(feed_name=feed_name).first()
@@ -36,7 +36,7 @@ class Feeds(Fish):
         else:
             return("no feeds by that name yet!")
 
-    def get_suppliers(feed_name):
+    def get_suppliers(self, feed_name):
         feed_suppliers = []
         suppliers = Supplier.query.filter_by(feed_name=feed_name).all()
         if suppliers:
