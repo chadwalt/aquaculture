@@ -1,7 +1,7 @@
 from app import db
 
 class Fish(db.Model):
-    __tablename__ = fish
+    __tablename__ = 'fish'
 
     id = db.Column(Integer, primary_key=True)
     name = db.Column(String(80), nullable=False)
@@ -13,7 +13,7 @@ class Fish(db.Model):
 
 class Feed(db.Model):
 
-    __tablename__ = feed
+    __tablename__ = 'feed'
 
     id = db.Column(Integer, primary_key=True)
     name = db.Column(String(80), nullable=False)
@@ -27,7 +27,7 @@ class Feed(db.Model):
 
 class Supplier(db.Model):
     
-    __tablename__ = supplier
+    __tablename__ = 'supplier'
 
     id = db.Column(Integer, primary_key=True)
     name = db.Column(String(80), nullable=False)
