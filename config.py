@@ -6,18 +6,18 @@ class Config(object):
     SECRET = os.getenv('SECRET')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SECRET = "very sensitive text"
-    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/shoppinglist_db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/aquaculture'
 
 class DevelopmentConfig(Config):
     FLASK_APP = "run.py"
     Development = True
     SECRET = "very sensitive text"
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/shoppinglist_db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/aquaculture'
 
 class TestingConfig(Config):
     Testing = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/shoppinglist_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://kisakye:kisakye6@localhost/aquaculture_test'
     DEBUG = True
 
 class StagingConfig(Config):
