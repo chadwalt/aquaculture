@@ -1,6 +1,6 @@
 from app import db
 
-class Fish(db.Model);
+class Fish(db.Model):
     __tablename__ = fish
 
     id = db.Column(Integer, primary_key=True)
@@ -11,7 +11,7 @@ class Fish(db.Model);
         self.name = name
 
 
-class Feed(db.Model);
+class Feed(db.Model):
 
     __tablename__ = feed
 
