@@ -1,6 +1,8 @@
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, jsonify
+from .models.py import Fish, Feed, Supplier
 
+
+app = Flask(__name__)
 
 class Fish(Resource):
     
@@ -10,10 +12,10 @@ class Fish(Resource):
         if fish_that_eat_feed:
            for fish in fish_that_eat_feed:
                fish_details = {
-                    'id': fish.id,
-                    'name': fish.name
-                }
-                fish_list.append(fish_details)
+                   'id': fish.id,
+                   'name': fish.name
+                   }
+                   fish_list.append(fish_details)
 
             return jsonify({'fish that eat feed are': fish_list}, 200)
         else:
